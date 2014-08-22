@@ -57,7 +57,7 @@ var Fall = {
         },
 
     toggle_pause: function(){
-        Fall.is_pause = !Fall.is_pause;
+        Fall.is_paused = !Fall.is_paused;
     },
 
     tick: function(){
@@ -147,8 +147,8 @@ $(function(){
 });
 
 $(document).keydown(function(e) {
-    if (e.keyCode == 37 && Fall.man.ready && !Fall.is_pause && Fall.man.cur_col > 0) {Fall.left();}
-    if (e.keyCode == 39 && Fall.man.ready && !Fall.is_pause && Fall.man.cur_col < 7) {Fall.right();}
+    if (e.keyCode == 37 && Fall.man.ready && !Fall.is_paused && Fall.man.cur_col > 0) {Fall.left();}
+    if (e.keyCode == 39 && Fall.man.ready && !Fall.is_paused && Fall.man.cur_col < 7) {Fall.right();}
 });
 
 // : vim: fdm=indent
