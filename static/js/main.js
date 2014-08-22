@@ -4,14 +4,26 @@
 var Fall = {
     is_paused: true,
 
-    layers: {
-        front:      $('#front'),
-        middle1:    $('#middle1'),
-        middle2:    $('#middle2'),
-        back:       $('#back')
-        },
+    layers: {},
+
+    altitude: 11000,  // meters :O
+
+    obstacles: [],
+
+    objects: {
+        front:   [
+            {altitude: 11000, color: 'red'}
+        ],
+        middle1: [],
+        middle2: [],
+        back:    [],
+    },
 
     init: function(){
+        Fall.layers.front   = $('#front');
+        Fall.layers.middle1 = $('#middle1');
+        Fall.layers.middle2 = $('#middle2');
+        Fall.layers.back    = $('#back');
         },
 
     start: function(){
@@ -81,3 +93,5 @@ $(document).keydown(function(e) {
     if (e.keyCode == 37 && man_ready) {left();}
     if (e.keyCode == 39 && man_ready) {right();}
 });
+
+// : vim: fdm=indent
