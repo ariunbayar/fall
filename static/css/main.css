@@ -272,5 +272,6 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 #middle1{ z-index: 300; }
 #middle2{ z-index: 200; }
 #back{ z-index: 100; }
-
-.floater{ position: absolute; }
+#front *, #middle1 *, #middle2 *, #back *{
+    position: absolute;
+}
