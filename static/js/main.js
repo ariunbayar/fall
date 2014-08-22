@@ -4,7 +4,7 @@
 var Fall = {
     is_paused: true,
     is_ready: false,
-    man_ready: true,
+    man: { ready: true, cur_col: 4},
     column: 8, // defualt width
     row: 12, // default height
     cell: {width: 50, height: 50},
@@ -36,8 +36,8 @@ var Fall = {
         var man_init = function() {
             $("#man").css({
                 //'margin-left': parseInt($("#front").css('width')) / 2,
-                'margin-left': parseInt($("#front").css('width')) / 2,
-                'margin-top': parseInt($("#front").css('height')) / 3
+                'margin-left': Fall.man.cur_col * Fall.cell.width,
+                'margin-top': parseInt(Fall.row / 3) * Fall.cell.height
                 }
             );
         }
@@ -75,23 +75,25 @@ var Fall = {
     },
 
     left: function() {
-        Fall.man_ready = false;
+        Fall.man.ready = false;
         var cur_left = parseInt($("#man").css('margin-left'));
+        Fall.man.cur_col--;
         $("#man").animate({
-            'margin-left': cur_left - 50
+            'margin-left': Fall.man.cur_col * Fall.cell.width
             }, 300, "linear", function() {
-                Fall.man_ready = true;
+                Fall.man.ready = true;
             }
         );
     },
 
     right: function() {
-        Fall.man_ready = false;
+        Fall.man.ready = false;
         var cur_left = parseInt($("#man").css('margin-left'));
+        Fall.man.cur_col++;
         $("#man").animate({
-            'margin-left': cur_left + 50
+            'margin-left': Fall.man.cur_col * Fall.cell.width
             }, 300, "linear", function() {
-                Fall.man_ready = true;
+                Fall.man.ready = true;
             }
         );
     },
@@ -119,8 +121,8 @@ $(function(){
 });
 
 $(document).keydown(function(e) {
-    if (e.keyCode == 37 && Fall.man_ready && !Fall.is_pause) {Fall.left();}
-    if (e.keyCode == 39 && Fall.man_ready && !Fall.is_pause) {Fall.right();}
+    if (e.keyCode == 37 && Fall.man.ready && !Fall.is_pause && Fall.man.cur_col > 0) {Fall.left();}
+    if (e.keyCode == 39 && Fall.man.ready && !Fall.is_pause && Fall.man.cur_col < 7) {Fall.right();}
 });
 
 // : vim: fdm=indent
