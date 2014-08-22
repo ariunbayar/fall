@@ -9,7 +9,7 @@ var Fall = {
         middle1:    $('#middle1'),
         middle2:    $('#middle2'),
         back:       $('#back')
-    }
+    },
 
     init: function(){
         Fall.is_paused = false;
@@ -36,9 +36,8 @@ var Fall = {
 }
 
 var move = function(speed, obj) {
-    console.log(speed, obj);
     $(obj).animate({
-        top: 400
+        top: 600
         }, 5000, "linear", function() {
             console.log('done');
         }
@@ -48,5 +47,5 @@ var move = function(speed, obj) {
 
 $(function(){
     Fall.init();
-    move(0.5, 'hello');
+    move(0.5, '#rectangle');
 });
