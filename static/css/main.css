@@ -243,9 +243,17 @@ ul.messages li:nth-child(119n+117){ color: Wheat; }
 ul.messages li:nth-child(119n+118){ color: Yellow; }
 ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 
-#rectangle{
+#man {
+    position: absolute;
+    width:20px;
+    height:20px;
+    background:brown;
+}
+
+#rectangle {
     position: absolute;
     width:20px;
     height:20px;
     background:blue;
 }
+/* below atu
