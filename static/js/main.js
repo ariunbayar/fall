@@ -4,6 +4,10 @@
 var Fall = {
     is_paused: true,
     is_ready: false,
+    man_ready: true,
+    column: 8, // defualt width
+    row: 12, // default height
+    cell: {width: 50, height: 50},
 
     tick_speed: 100,  // milliseconds
 
@@ -28,6 +32,16 @@ var Fall = {
         Fall.layers.middle2 = $('#middle2');
         Fall.layers.back    = $('#back');
         setInterval(Fall.tick, Fall.tick_speed);
+
+        var man_init = function() {
+            $("#man").css({
+                'margin-left': parseInt($("#front").css('width')) / 2,
+                'margin-top': parseInt($("#front").css('height')) / 3
+                }
+            );
+        }
+
+        man_init();
         },
 
     start: function(){
@@ -67,7 +81,7 @@ var Fall = {
 var move = function(speed, obj) {
     speed = parseInt(speed);
     $(obj).animate({
-        top: 600
+        top: 0
         }, speed, "linear", function() {
             console.log('done');
         }
@@ -75,44 +89,42 @@ var move = function(speed, obj) {
 }
 
 var left = function() {
-    man_ready = false;
+    Fall.man_ready = false;
     var cur_left = parseInt($("#man").css('margin-left'));
-    console.log(parseInt($(".content").css('margin-left')));
-    if (cur_left + 50 > parseInt($(".content").css('margin-left'))) {
+    //if (cur_left + 50 < parseInt($("#front").css('width'))) {
         $("#man").animate({
             'margin-left': cur_left - 50
             }, 300, "linear", function() {
-                man_ready = true;
+                Fall.man_ready = true;
             }
         );
-    } else {
-        man_ready = true;
-    }
+    //} else {
+        //man_ready = true;
+    //}
 }
 
 var right = function() {
-    man_ready = false;
+    Fall.man_ready = false;
     var cur_left = parseInt($("#man").css('margin-left'));
-    if (cur_left - 50 < parseInt($(".content").css('margin-left'))) {
+    //if (cur_left - 50 > parseInt($("#front").css('width'))) {
         $("#man").animate({
             'margin-left': cur_left + 50
             }, 300, "linear", function() {
-                man_ready = true;
+                Fall.man_ready = true;
             }
         );
-    } else {
-        man_ready = true;
-    }
+    //} else {
+    //    man_ready = true;
+    //}
 }
 
 $(function(){
     Fall.init();
 });
-var man_ready = true;
 
 $(document).keydown(function(e) {
-    if (e.keyCode == 37 && man_ready) {left();}
-    if (e.keyCode == 39 && man_ready) {right();}
+    if (e.keyCode == 37 && Fall.man_ready && !Fall.is_pause) {left();}
+    if (e.keyCode == 39 && Fall.man_ready && !Fall.is_pause) {right();}
 });
 
 // : vim: fdm=indent

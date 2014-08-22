@@ -245,17 +245,18 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 
 #man {
     position: absolute;
-    width:20px;
-    height:20px;
+    width:50px;
+    height:50px;
     background:brown;
 }
 
 #rectangle {
     position: absolute;
-    width:20px;
-    height:20px;
+    width:50px;
+    height:50px;
     background:blue;
     opacity: 0.5;
+    top: 600px;
 }
 
 #front, #middle1, #middle2, #back{
@@ -263,7 +264,7 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
     border-style: solid;
     border-width: 2px;
     width:400px;
-    height:550px;
+    height:600px;
 }
 #front{
     z-index: 400;
