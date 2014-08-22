@@ -8,6 +8,8 @@ var Fall = {
     tick_speed: 100,  // milliseconds
 
     layers: {},
+    height: 0,
+    width: 0,
 
     altitude: 11000,  // meters :O
 
@@ -22,12 +24,19 @@ var Fall = {
         back:    [],
     },
 
+
     init: function(){
         Fall.layers.front   = $('#front');
         Fall.layers.middle1 = $('#middle1');
         Fall.layers.middle2 = $('#middle2');
         Fall.layers.back    = $('#back');
+        Fall.layers.front.speed   = parseFloat(Fall.layers.front.attr('data-speed'));
+        Fall.layers.middle1.speed = parseFloat(Fall.layers.middle1.attr('data-speed'));
+        Fall.layers.middle2.speed = parseFloat(Fall.layers.middle2.attr('data-speed'));
+        Fall.layers.back.speed    = parseFloat(Fall.layers.back.attr('data-speed'));
         setInterval(Fall.tick, Fall.tick_speed);
+        Fall.height = Fall.layers.front.height();
+        Fall.width = Fall.layers.front.width();
         },
 
     start: function(){
@@ -43,6 +52,16 @@ var Fall = {
         Fall.is_ready = false;
 
         Fall.altitude -= 1;
+        if (Fall.altitude % 20 == 0) {
+            for (var i in Fall.layers) {
+                var layer = Fall.layers[i];
+                var column = ~~(Math.random() * 7) + 1;
+                var item = Fall.add_item(layer, column);
+                // TODO by height and layer speed
+                var speed = 3000 / layer.speed;
+                move(item, speed);
+            }
+        }
         Fall.update();
 
         Fall.is_ready = true;
@@ -57,20 +76,31 @@ var Fall = {
         },
 
     finish: function(){
-
+        // TODO
         },
+
+    add_item: function(layer, column){
+        // TODO change with grid width
+        var css = {
+            opacity: layer.speed,
+            backgroundColor : 'DarkSlateBlue',
+            height          : 50,
+            width           : 50,
+            left            : (column - 1) * 50,
+            top             : Fall.height
+        }
+        var item = $('<div>').css(css);
+        layer.append(item);
+        return item;
+    },
 
     dummy: null  // avoiding trailing comma errors
 }
 
-var move = function(speed, obj) {
-    speed = parseInt(speed);
-    $(obj).animate({
-        top: 600
-        }, speed, "linear", function() {
-            console.log('done');
-        }
-    );
+var move = function(item, speed) {
+    item.animate({top: 0}, speed, "linear", function() {
+        item.remove();
+        });
 }
 
 var left = function() {
@@ -101,7 +131,6 @@ var right = function() {
 
 $(function(){
     Fall.init();
-    move(5000, '#rectangle');
 });
 var man_ready = true;
 
