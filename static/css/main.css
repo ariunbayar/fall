@@ -281,31 +281,6 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
     z-index: 100;
 }
 
-#s1{
+.floater{
     position: absolute;
-    top: 200px;
-    left: 250px;
 }
-
-#s2{
-    position: absolute;
-    top: 400px;
-    left: 90px;
-}
-
-#s3{
-    position: absolute;
-    top: 40px;
-    left: 105px;
-}
-
-#s4{
-    position: absolute;
-    top: 185px;
-    left: 150px;
-}
-
-.floater_object{
-    /* here is the impelentation for floater */
-}
-/* below atu
