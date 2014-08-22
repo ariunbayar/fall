@@ -9,18 +9,19 @@ var Fall = {
         middle1:    $('#middle1'),
         middle2:    $('#middle2'),
         back:       $('#back')
-    },
+        },
 
     init: function(){
-        Fall.is_paused = false;
-        Fall.start();
         },
 
     start: function(){
-        // TODO
+        Fall.is_paused = false;
+        $('#start').hide();
+        $('#game').show();
         },
 
     tick: function(){
+        if (Fall.is_paused) { return; }
         // TODO
         },
 
