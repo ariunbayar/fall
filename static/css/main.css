@@ -258,39 +258,26 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
     opacity: 0.5;
 }
 
-#front{
+#front, #middle1, #middle2, #back{
     position: absolute;
     border-style: solid;
     border-width: 2px;
     width:400px;
     height:550px;
+}
+#front{
     z-index: 400;
 }
 
 #middle1{
-    position: absolute;
-    border-style: solid;
-    border-width: 2px;
-    width:400px;
-    height:550px;
     z-index: 300;
 }
 
 #middle2{
-    position: absolute;
-    border-style: solid;
-    border-width: 2px;
-    width:400px;
-    height:550px;
     z-index: 200;
 }
 
 #back{
-    position: absolute;
-    border-style: solid;
-    border-width: 2px;
-    width:400px;
-    height:550px;
     z-index: 100;
 }
 
@@ -316,5 +303,9 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
     position: absolute;
     top: 185px;
     left: 150px;
+}
+
+.floater_object{
+    /* here is the impelentation for floater */
 }
 /* below atu
