@@ -49,9 +49,10 @@ var Fall = {
 }
 
 var move = function(speed, obj) {
+    speed = parseInt(speed);
     $(obj).animate({
         top: 600
-        }, 5000, "linear", function() {
+        }, speed, "linear", function() {
             console.log('done');
         }
     );
@@ -63,7 +64,7 @@ var left = function() {
     console.log(cur_left);
     $("#man").animate({
         'margin-left': cur_left - 50
-        }, 500, "linear", function() {
+        }, 300, "linear", function() {
             console.log('left done');
             man_ready = true;
         }
@@ -76,7 +77,7 @@ var right = function() {
     console.log(cur_left);
     $("#man").animate({
         'margin-left': cur_left + 50
-        }, 500, "linear", function() {
+        }, 300, "linear", function() {
             console.log('right done');
             man_ready = true;
         }
@@ -85,7 +86,7 @@ var right = function() {
 
 $(function(){
     Fall.init();
-    move(0.5, '#rectangle');
+    move(5000, '#rectangle');
 });
 var man_ready = true;
 
