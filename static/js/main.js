@@ -58,22 +58,27 @@ var move = function(speed, obj) {
 }
 
 var left = function() {
+    man_ready = false;
     var cur_left = parseInt($("#man").css('margin-left'));
     console.log(cur_left);
     $("#man").animate({
         'margin-left': cur_left - 50
         }, 500, "linear", function() {
             console.log('left done');
+            man_ready = true;
         }
     );
 }
 
 var right = function() {
+    man_ready = false;
     var cur_left = parseInt($("#man").css('margin-left'));
+    console.log(cur_left);
     $("#man").animate({
         'margin-left': cur_left + 50
         }, 500, "linear", function() {
             console.log('right done');
+            man_ready = true;
         }
     );
 }
@@ -82,14 +87,11 @@ $(function(){
     Fall.init();
     move(0.5, '#rectangle');
 });
+var man_ready = true;
 
 $(document).keydown(function(e) {
-    if (e.keyCode == 37) {
-        left();
-    }
-    if (e.keyCode == 39) {
-        right();
-    }
+    if (e.keyCode == 37 && man_ready) {left();}
+    if (e.keyCode == 39 && man_ready) {right();}
 });
 
 // : vim: fdm=indent
