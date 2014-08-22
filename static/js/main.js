@@ -4,9 +4,9 @@
 var Fall = {
     is_paused: true,
     is_ready: false,
-    man_ready: true,
-    column: 8, // defualt width
-    row: 12, // default height
+    man: { ready: true, cur_col: 4},
+    column: 8,   // default width
+    row:    12,  // default height
     cell: {width: 50, height: 50},
 
     tick_speed: 100,  // milliseconds
@@ -41,14 +41,11 @@ var Fall = {
         setInterval(Fall.tick, Fall.tick_speed);
         Fall.height = Fall.layers.front.height();
         Fall.width = Fall.layers.front.width();
-
         $("#man").css({
-            //'margin-left': parseInt($("#front").css('width')) / 2,
-            'margin-left': parseInt($("#front").css('width')) / 2,
-            'margin-top': parseInt($("#front").css('height')) / 3
+            'margin-left': Fall.man.cur_col * Fall.cell.width,
+            'margin-top': parseInt(Fall.row / 3) * Fall.cell.height
             }
         );
-
         },
 
     start: function(){
@@ -57,6 +54,10 @@ var Fall = {
         $('#start').hide();
         $('#game').show();
         },
+
+    toggle_pause: function(){
+        Fall.is_paused = !Fall.is_paused;
+    },
 
     tick: function(){
         if (Fall.is_paused) { return; }
@@ -70,7 +71,7 @@ var Fall = {
                 var column = ~~(Math.random() * 7) + 1;
                 var item = Fall.add_item(layer, column);
                 // TODO by height and layer speed
-                var speed = 3000 / layer.speed;
+                var speed = 1500 / layer.speed;
                 Fall.move(item, speed);
             }
         }
@@ -86,23 +87,25 @@ var Fall = {
         },
 
     left: function() {
-        Fall.man_ready = false;
+        Fall.man.ready = false;
         var cur_left = parseInt($("#man").css('margin-left'));
+        Fall.man.cur_col--;
         $("#man").animate({
-            'margin-left': cur_left - 50
+            'margin-left': Fall.man.cur_col * Fall.cell.width
             }, 300, "linear", function() {
-                Fall.man_ready = true;
+                Fall.man.ready = true;
             }
         );
     },
 
     right: function() {
-        Fall.man_ready = false;
+        Fall.man.ready = false;
         var cur_left = parseInt($("#man").css('margin-left'));
+        Fall.man.cur_col++;
         $("#man").animate({
-            'margin-left': cur_left + 50
+            'margin-left': Fall.man.cur_col * Fall.cell.width
             }, 300, "linear", function() {
-                Fall.man_ready = true;
+                Fall.man.ready = true;
             }
         );
     },
@@ -124,10 +127,10 @@ var Fall = {
         var css = {
             opacity: layer.speed,
             backgroundColor : 'DarkSlateBlue',
-            height          : 50,
-            width           : 50,
-            left            : (column - 1) * 50,
-            top             : Fall.height
+            height          : Fall.cell.height,
+            width           : Fall.cell.width,
+            left            : (column - 1) * Fall.cell.width,
+            top             : Fall.row * Fall.cell.height
         }
         var item = $('<div>').css(css);
         layer.append(item);
@@ -143,8 +146,8 @@ $(function(){
 });
 
 $(document).keydown(function(e) {
-    if (e.keyCode == 37 && Fall.man_ready && !Fall.is_pause) {Fall.left();}
-    if (e.keyCode == 39 && Fall.man_ready && !Fall.is_pause) {Fall.right();}
+    if (e.keyCode == 37 && Fall.man.ready && !Fall.is_paused && Fall.man.cur_col > 0) {Fall.left();}
+    if (e.keyCode == 39 && Fall.man.ready && !Fall.is_paused && Fall.man.cur_col < 7) {Fall.right();}
 });
 
 // : vim: fdm=indent
