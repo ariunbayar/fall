@@ -53,12 +53,19 @@ var Fall = {
         Fall.is_ready = true,
         $('#start').hide();
         $('#game').show();
+        $('#pause').show();
+        $('#play').hide();
         },
 
     toggle_pause: function(){
         Fall.is_paused = !Fall.is_paused;
-        $('#pause').hide();
-        $('#play').show();
+        if (Fall.is_paused) {
+            $('#pause').hide();
+            $('#play').show();
+        } else {
+            $('#pause').show();
+            $('#play').hide();
+        }
     },
 
     tick: function(){
