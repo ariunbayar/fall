@@ -248,4 +248,58 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
     width:20px;
     height:20px;
     background:blue;
+    opacity: 0.5;
+}
+
+#front{
+    position: absolute;
+    width:400px;
+    height:250px;
+    z-index: 400;
+    opacity: 0.1;
+}
+
+#middle1{
+    position: absolute;
+    width:400px;
+    height:250px;
+    z-index: 300;
+    opacity: 0.25;
+}
+
+#middle2{
+    position: absolute;
+    width:400px;
+    height:250px;
+    z-index: 200;
+    opacity: 0.5;
+}
+
+#back{
+    position: absolute;
+    width:400px;
+    height:250px;
+    z-index: 100;
+    opacity: 1;
+}
+
+#s1{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+#s2{
+    position: absolute;
+    top: 10px;
+    left: 90px;
+}
+#s3{
+    position: absolute;
+    top: 200px;
+    left: 55px;
+}
+#s4{
+    position: absolute;
+    top: 15px;
+    left: 150px;
 }
