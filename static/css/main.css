@@ -10,10 +10,6 @@ body{
     margin: 0 auto;
     width: 400px;
 }
-.menu{
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    background: #fff;
-}
 .content{
     margin: 0 auto;
     width: 400px;

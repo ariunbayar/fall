@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -6,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="static/font-awesome/css/font-awesome.min.css"/>
 </head>
 <body>
+    <div class="header"> </div>
     <div class="content">
         <div id="start">
             Бүгд өндрөөс үсрэлт хийж байна.<br/>
@@ -15,13 +17,11 @@
             </a>
         </div>
         <div id ="game" style="display: none;">
-            <div class="menu">
-                Үлдсэн зай: <span id="altitude"></span> м
-                <a href="javascript:Fall.toggle_pause()" style="float:right; margin-right:10px;">
-                    <i id="pause" class="fa fa-pause"></i>
-                    <i id="play" class="fa fa-play"></i>
-                </a>
-            </div>
+            Үлдсэн зай: <span id="altitude"></span>м
+            <a href="javascript:Fall.toggle_pause()" style="float:right; margin-right:10px;">
+                <i id="pause" class="fa fa-pause"></i>
+                <i id="play" class="fa fa-play"></i>
+            </a>
             <div id="game_board">
                 <div id="front" data-speed="1">
                     <div id="man"> </div>
