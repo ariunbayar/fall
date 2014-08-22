@@ -56,7 +56,6 @@ var Fall = {
         Fall.is_ready = true,
         $('#start').hide();
         $('#game').show();
-        $('#pause').show();
         },
 
     tick: function(){
