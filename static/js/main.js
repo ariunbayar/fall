@@ -44,8 +44,37 @@ var move = function(speed, obj) {
     );
 }
 
+var left = function() {
+    var cur_left = parseInt($("#man").css('margin-left'));
+    console.log(cur_left);
+    $("#man").animate({
+        'margin-left': cur_left - 50
+        }, 500, "linear", function() {
+            console.log('left done');
+        }
+    );
+}
+
+var right = function() {
+    var cur_left = parseInt($("#man").css('margin-left'));
+    $("#man").animate({
+        'margin-left': cur_left + 50
+        }, 500, "linear", function() {
+            console.log('right done');
+        }
+    );
+}
 
 $(function(){
     Fall.init();
     move(0.5, '#rectangle');
+});
+
+$(document).keydown(function(e) {
+    if (e.keyCode == 37) {
+        left();
+    }
+    if (e.keyCode == 39) {
+        right();
+    }
 });
