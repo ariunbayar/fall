@@ -8,16 +8,23 @@ body{
 }
 .header, .footer{
     margin: 0 auto;
-    width: 1000px;
+    width: 400px;
+}
+.menu{
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    background: #fff;
 }
 .content{
     margin: 0 auto;
     width: 400px;
 }
 .header, .footer{
-    text-align: center;
-    padding: 20px;
-    height: 100px;
+    text-align: left;
+    text-align: top;
+    padding: 35px;
+    height: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .header h1{
     color: #aaa;
@@ -105,6 +112,27 @@ ul.messages li div:last-child{
     cursor: pointer;
 }
 a.btn{
+    text-decoration: none;
+}
+.btn_pause{
+    float:right;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    border: 1px solid #aaa;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 10px 30px;
+    background-color: palegoldenrod;
+    text-shadow: 0 1px 0 #fff;
+    color: rgb(175, 170, 120);
+    box-shadow: 1px 2px 0 #ccc, 1px 2px 0 rgba(255,255,255,.5) inset;
+}
+.btn_pause:hover{
+    box-shadow: none;
+    cursor: pointer;
+}
+a.btn_pause{
     text-decoration: none;
 }
 
@@ -245,20 +273,23 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 
 #man {
     position: absolute;
-    width:20px;
-    height:20px;
+    width:50px;
+    height:50px;
     background:brown;
 }
 
 #rectangle {
-    width:20px;
-    height:20px;
+    position: absolute;
+    width:50px;
+    height:50px;
     background:blue;
+    opacity: 0.5;
+    top: 600px;
 }
 
 #game_board, #front, #middle1, #middle2, #back{
     width:400px;
-    height:550px;
+    height:600px;
 }
 #game_board {
     border-style: solid;
@@ -267,6 +298,7 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 #front, #middle1, #middle2, #back{
     position: absolute;
     overflow: hidden;
+    height: 600px;
 }
 #front{ z-index: 400; }
 #middle1{ z-index: 300; }

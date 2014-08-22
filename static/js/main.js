@@ -4,6 +4,10 @@
 var Fall = {
     is_paused: true,
     is_ready: false,
+    man_ready: true,
+    column: 8, // defualt width
+    row: 12, // default height
+    cell: {width: 50, height: 50},
 
     tick_speed: 100,  // milliseconds
 
@@ -37,6 +41,14 @@ var Fall = {
         setInterval(Fall.tick, Fall.tick_speed);
         Fall.height = Fall.layers.front.height();
         Fall.width = Fall.layers.front.width();
+
+        $("#man").css({
+            //'margin-left': parseInt($("#front").css('width')) / 2,
+            'margin-left': parseInt($("#front").css('width')) / 2,
+            'margin-top': parseInt($("#front").css('height')) / 3
+            }
+        );
+
         },
 
     start: function(){
@@ -44,6 +56,8 @@ var Fall = {
         Fall.is_ready = true,
         $('#start').hide();
         $('#game').show();
+        $('#pause').show();
+        Fall.move(5000, '#rectangle');
         },
 
     tick: function(){
@@ -66,6 +80,34 @@ var Fall = {
 
         Fall.is_ready = true;
         },
+
+    move: function(item, speed) {
+        item.animate({top: 0}, speed, "linear", function() {
+            item.remove();
+            });
+        },
+
+    left: function() {
+        Fall.man_ready = false;
+        var cur_left = parseInt($("#man").css('margin-left'));
+        $("#man").animate({
+            'margin-left': cur_left - 50
+            }, 300, "linear", function() {
+                Fall.man_ready = true;
+            }
+        );
+    },
+
+    right: function() {
+        Fall.man_ready = false;
+        var cur_left = parseInt($("#man").css('margin-left'));
+        $("#man").animate({
+            'margin-left': cur_left + 50
+            }, 300, "linear", function() {
+                Fall.man_ready = true;
+            }
+        );
+    },
 
     update: function(){
         $('#altitude').html(Fall.altitude);
@@ -97,46 +139,17 @@ var Fall = {
     dummy: null  // avoiding trailing comma errors
 }
 
-var move = function(item, speed) {
-    item.animate({top: 0}, speed, "linear", function() {
-        item.remove();
-        });
+
 }
 
-var left = function() {
-    man_ready = false;
-    var cur_left = parseInt($("#man").css('margin-left'));
-    console.log(cur_left);
-    $("#man").animate({
-        'margin-left': cur_left - 50
-        }, 300, "linear", function() {
-            console.log('left done');
-            man_ready = true;
-        }
-    );
-}
-
-var right = function() {
-    man_ready = false;
-    var cur_left = parseInt($("#man").css('margin-left'));
-    console.log(cur_left);
-    $("#man").animate({
-        'margin-left': cur_left + 50
-        }, 300, "linear", function() {
-            console.log('right done');
-            man_ready = true;
-        }
-    );
-}
 
 $(function(){
     Fall.init();
 });
-var man_ready = true;
 
 $(document).keydown(function(e) {
-    if (e.keyCode == 37 && man_ready) {left();}
-    if (e.keyCode == 39 && man_ready) {right();}
+    if (e.keyCode == 37 && Fall.man_ready && !Fall.is_pause) {Fall.left();}
+    if (e.keyCode == 39 && Fall.man_ready && !Fall.is_pause) {Fall.right();}
 });
 
 // : vim: fdm=indent

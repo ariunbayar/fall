@@ -5,8 +5,9 @@
     <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
 </head>
 <body>
-    <div class="header">
+    <div class="header menu">
         Үлдсэн зай: <span id="altitude"></span>
+        <a id="pause" class="btn_pause" style="display:none;">Пауз авах</a>
     </div>
     <div class="content">
         <div id="start">
@@ -20,12 +21,12 @@
             <div id="game_board">
                 <div id="front" data-speed="1">
                     <div id="rectangle"> </div>
+                    <div id="man"> </div>
                 </div>
                 <div id="middle1" data-speed="0.5"> </div>
                 <div id="middle2" data-speed="0.25"> </div>
                 <div id="back" data-speed="0"> </div>
             </div>
-            <div id="man"> </div>
         </div>
     </div>
     <script type="text/javascript" src="static/js/jquery-2.0.3.min.js"></script>
