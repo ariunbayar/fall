@@ -270,6 +270,7 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 #front, #middle1, #middle2, #back{
     position: absolute;
     overflow: hidden;
+    height: 600px;
 }
 #front{ z-index: 400; }
 #middle1{ z-index: 300; }
