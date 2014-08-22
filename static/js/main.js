@@ -69,7 +69,7 @@ var Fall = {
         if (Fall.altitude % 20 == 0) {
             for (var i in Fall.layers) {
                 var layer = Fall.layers[i];
-                var column = ~~(Math.random() * 7) + 1;
+                var column = ~~(Math.random() * 8) + 1;
                 var item = Fall.add_item(layer, column);
                 // TODO by height and layer speed
                 var speed = 1500 / layer.speed;
