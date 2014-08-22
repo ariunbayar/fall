@@ -114,28 +114,10 @@ ul.messages li div:last-child{
 a.btn{
     text-decoration: none;
 }
-.btn_pause{
+.play{
+    margin-right:10px;
     float:right;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 800;
-    font-style: italic;
-    border: 1px solid #aaa;
-    display: inline-block;
-    border-radius: 3px;
-    padding: 10px 30px;
-    background-color: palegoldenrod;
-    text-shadow: 0 1px 0 #fff;
-    color: rgb(175, 170, 120);
-    box-shadow: 1px 2px 0 #ccc, 1px 2px 0 rgba(255,255,255,.5) inset;
 }
-.btn_pause:hover{
-    box-shadow: none;
-    cursor: pointer;
-}
-a.btn_pause{
-    text-decoration: none;
-}
-
 .pull-right{ float: right; }
 .pull-left { float: left; }
 

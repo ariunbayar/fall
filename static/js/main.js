@@ -57,6 +57,8 @@ var Fall = {
 
     toggle_pause: function(){
         Fall.is_paused = !Fall.is_paused;
+        $('#pause').hide();
+        $('#play').show();
     },
 
     tick: function(){
