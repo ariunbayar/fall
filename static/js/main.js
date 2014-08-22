@@ -35,6 +35,7 @@ var Fall = {
         Fall.is_ready = true,
         $('#start').hide();
         $('#game').show();
+        move(5000, '#rectangle');
         },
 
     tick: function(){
@@ -76,32 +77,36 @@ var move = function(speed, obj) {
 var left = function() {
     man_ready = false;
     var cur_left = parseInt($("#man").css('margin-left'));
-    console.log(cur_left);
-    $("#man").animate({
-        'margin-left': cur_left - 50
-        }, 300, "linear", function() {
-            console.log('left done');
-            man_ready = true;
-        }
-    );
+    console.log(parseInt($(".content").css('margin-left')));
+    if (cur_left + 50 > parseInt($(".content").css('margin-left'))) {
+        $("#man").animate({
+            'margin-left': cur_left - 50
+            }, 300, "linear", function() {
+                man_ready = true;
+            }
+        );
+    } else {
+        man_ready = true;
+    }
 }
 
 var right = function() {
     man_ready = false;
     var cur_left = parseInt($("#man").css('margin-left'));
-    console.log(cur_left);
-    $("#man").animate({
-        'margin-left': cur_left + 50
-        }, 300, "linear", function() {
-            console.log('right done');
-            man_ready = true;
-        }
-    );
+    if (cur_left - 50 < parseInt($(".content").css('margin-left'))) {
+        $("#man").animate({
+            'margin-left': cur_left + 50
+            }, 300, "linear", function() {
+                man_ready = true;
+            }
+        );
+    } else {
+        man_ready = true;
+    }
 }
 
 $(function(){
     Fall.init();
-    move(5000, '#rectangle');
 });
 var man_ready = true;
 
