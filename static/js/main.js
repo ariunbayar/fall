@@ -57,6 +57,10 @@ var Fall = {
         $('#pause').show();
         },
 
+    toggle_pause: function(){
+        Fall.is_pause = !Fall.is_pause;
+    },
+
     tick: function(){
         if (Fall.is_paused) { return; }
         if (!Fall.is_ready) { return; }
