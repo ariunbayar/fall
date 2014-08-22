@@ -251,36 +251,26 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 }
 
 #rectangle {
-    position: absolute;
     width:20px;
     height:20px;
     background:blue;
-    opacity: 0.5;
 }
 
-#front, #middle1, #middle2, #back{
-    position: absolute;
-    border-style: solid;
-    border-width: 2px;
+#game_board, #front, #middle1, #middle2, #back{
     width:400px;
     height:550px;
 }
-#front{
-    z-index: 400;
+#game_board {
+    border-style: solid;
+    border-width: 2px;
 }
-
-#middle1{
-    z-index: 300;
-}
-
-#middle2{
-    z-index: 200;
-}
-
-#back{
-    z-index: 100;
-}
-
-.floater{
+#front, #middle1, #middle2, #back{
     position: absolute;
+    overflow: hidden;
 }
+#front{ z-index: 400; }
+#middle1{ z-index: 300; }
+#middle2{ z-index: 200; }
+#back{ z-index: 100; }
+
+.floater{ position: absolute; }
