@@ -4,6 +4,13 @@
 var Fall = {
     is_paused: true,
 
+    layers: {
+        front:      $('#front'),
+        middle1:    $('#middle1'),
+        middle2:    $('#middle2'),
+        back:       $('#back')
+    }
+
     init: function(){
         Fall.is_paused = false;
         Fall.start();
