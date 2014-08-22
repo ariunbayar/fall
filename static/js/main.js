@@ -57,7 +57,6 @@ var Fall = {
         $('#start').hide();
         $('#game').show();
         $('#pause').show();
-        Fall.move(5000, '#rectangle');
         },
 
     tick: function(){
@@ -73,7 +72,7 @@ var Fall = {
                 var item = Fall.add_item(layer, column);
                 // TODO by height and layer speed
                 var speed = 3000 / layer.speed;
-                move(item, speed);
+                Fall.move(item, speed);
             }
         }
         Fall.update();
@@ -137,9 +136,6 @@ var Fall = {
     },
 
     dummy: null  // avoiding trailing comma errors
-}
-
-
 }
 
 
