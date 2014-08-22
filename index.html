@@ -3,12 +3,9 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Fall / Уналт</title>
     <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="static/font-awesome/css/font-awesome.min.css"/>
 </head>
 <body>
-    <div class="header menu">
-        Үлдсэн зай: <span id="altitude"></span>
-        <a href="javascript:Fall.toggle_pause()" id="pause" class="btn_pause" style="display:none;">Пауз авах</a>
-    </div>
     <div class="content">
         <div id="start">
             Бүгд өндрөөс үсрэлт хийж байна.<br/>
@@ -18,6 +15,15 @@
             </a>
         </div>
         <div id ="game" style="display: none;">
+            <div class="menu">
+                Үлдсэн зай: <span id="altitude"></span> м
+                <a href="javascript:Fall.toggle_pause()">
+                    <i id="pause" class="fa fa-pause" style="float:right; margin-right:10px;"></i>
+                </a>
+                <a style="float:right; margin-right:10px">
+                    <i id="play" class="fa fa-play" style="display:none;"></i>
+                </a>
+            </div>
             <div id="game_board">
                 <div id="front" data-speed="1">
                     <div id="man"> </div>
