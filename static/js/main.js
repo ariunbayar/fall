@@ -4,14 +4,26 @@
 var Fall = {
     is_paused: true,
 
-    layers: {
-        front:      $('#front'),
-        middle1:    $('#middle1'),
-        middle2:    $('#middle2'),
-        back:       $('#back')
-        },
+    layers: {},
+
+    altitude: 11000,  // meters :O
+
+    obstacles: [],
+
+    objects: {
+        front:   [
+            {altitude: 11000, color: 'red'}
+        ],
+        middle1: [],
+        middle2: [],
+        back:    [],
+    },
 
     init: function(){
+        Fall.layers.front   = $('#front');
+        Fall.layers.middle1 = $('#middle1');
+        Fall.layers.middle2 = $('#middle2');
+        Fall.layers.back    = $('#back');
         },
 
     start: function(){
@@ -50,3 +62,6 @@ $(function(){
     Fall.init();
     move(0.5, '#rectangle');
 });
+
+
+// : vim: fdm=indent
