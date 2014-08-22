@@ -5,8 +5,8 @@ var Fall = {
     is_paused: true,
     is_ready: false,
     man: { ready: true, cur_col: 4},
-    column: 8, // defualt width
-    row: 12, // default height
+    column: 8,   // default width
+    row:    12,  // default height
     cell: {width: 50, height: 50},
 
     tick_speed: 100,  // milliseconds
@@ -42,7 +42,6 @@ var Fall = {
         Fall.height = Fall.layers.front.height();
         Fall.width = Fall.layers.front.width();
         $("#man").css({
-            //'margin-left': parseInt($("#front").css('width')) / 2,
             'margin-left': Fall.man.cur_col * Fall.cell.width,
             'margin-top': parseInt(Fall.row / 3) * Fall.cell.height
             }
@@ -73,7 +72,7 @@ var Fall = {
                 var column = ~~(Math.random() * 7) + 1;
                 var item = Fall.add_item(layer, column);
                 // TODO by height and layer speed
-                var speed = 3000 / layer.speed;
+                var speed = 1500 / layer.speed;
                 Fall.move(item, speed);
             }
         }
@@ -129,10 +128,10 @@ var Fall = {
         var css = {
             opacity: layer.speed,
             backgroundColor : 'DarkSlateBlue',
-            height          : 50,
-            width           : 50,
-            left            : (column - 1) * 50,
-            top             : Fall.height
+            height          : Fall.cell.height,
+            width           : Fall.cell.width,
+            left            : (column - 1) * Fall.cell.width,
+            top             : Fall.row * Fall.cell.height
         }
         var item = $('<div>').css(css);
         layer.append(item);
