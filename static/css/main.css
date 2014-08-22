@@ -273,20 +273,23 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 
 #man {
     position: absolute;
-    width:20px;
-    height:20px;
+    width:50px;
+    height:50px;
     background:brown;
 }
 
 #rectangle {
-    width:20px;
-    height:20px;
+    position: absolute;
+    width:50px;
+    height:50px;
     background:blue;
+    opacity: 0.5;
+    top: 600px;
 }
 
 #game_board, #front, #middle1, #middle2, #back{
     width:400px;
-    height:550px;
+    height:600px;
 }
 #game_board {
     border-style: solid;
@@ -295,10 +298,12 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 #front, #middle1, #middle2, #back{
     position: absolute;
     overflow: hidden;
+    height: 600px;
 }
 #front{ z-index: 400; }
 #middle1{ z-index: 300; }
 #middle2{ z-index: 200; }
 #back{ z-index: 100; }
-
-.floater{ position: absolute; }
+#front *, #middle1 *, #middle2 *, #back *{
+    position: absolute;
+}
