@@ -9,8 +9,8 @@ var Fall = {
     row:    12,  // default height
     cell: {width: 50, height: 50},
 
-    tick_speed: 50,  // milliseconds
-    fall_speed: 1300,
+    tick_speed: 100,  // milliseconds
+    fall_speed: 2000,
 
     layers: {},
     height: 0,
@@ -18,9 +18,13 @@ var Fall = {
 
     altitude: 11000,  // meters :O
 
-    obstacles: [],
+    obstacles: [
+        '#balloons',
+        '#plane1',
+        '#plane2'
+    ],
 
-    objects: {
+    objects: {  // TODO is this used
         front: [
             {altitude: 11000, color: 'red'}
         ],
@@ -48,6 +52,9 @@ var Fall = {
             top: parseInt(Fall.row / 3) * Fall.cell.height
             }
         );
+        for (var i=0; i < Fall.obstacles.length; ++i) {
+            Fall.obstacles[i] = $(Fall.obstacles[i]);
+        }
         },
 
     start: function(){
@@ -161,15 +168,16 @@ var Fall = {
     add_item: function(layer, column){
         // TODO change with grid width
         var css = {
-            opacity: layer.speed,
-            backgroundColor : 'DarkSlateBlue',
-            height          : Fall.cell.height,
-            width           : Fall.cell.width,
+            opacity         : layer.speed,
+            height          : Fall.cell.height * layer.speed,
+            width           : Fall.cell.width * layer.speed,
             left            : (column - 1) * Fall.cell.width,
             top             : Fall.row * Fall.cell.height
-        }
-        var item = $('<div>').css(css);
+        };
+        var selected_item = Math.round(Math.random() * (Fall.obstacles.length - 1));
+        var item = Fall.obstacles[selected_item].clone();
         layer.append(item);
+        item.css(css);
         return item;
     },
 
