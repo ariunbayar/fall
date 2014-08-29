@@ -19,6 +19,9 @@ var Fall = {
     altitude: 11000,  // meters :O
 
     obstacles: [
+        '#rocket',
+        '#cloud',
+        '#black_cloud',
         '#balloons',
         '#plane1',
         '#plane2'
