@@ -117,18 +117,27 @@ var Fall = {
         var el1 = $(_el1), el2 = $(_el2);
         var el1_pos = el1.position(),
             el2_pos = el2.position();
+
         el1_pos.bottom = el1_pos.top  + el1.height();
         el1_pos.right  = el1_pos.left + el1.width();
         el2_pos.bottom = el2_pos.top  + el2.height();
         el2_pos.right  = el2_pos.left + el2.width();
+
+        // modify colliding range
+        var range = 0.8;  // collide at 80%
+        el1_pos.top    += el1.height() * (1 - range);
+        el1_pos.bottom -= el1.height() * (1 - range);
+        el1_pos.left   += el1.width() * (1 - range);
+        el1_pos.right  -= el1.width() * (1 - range);
+        el2_pos.top    += el2.height() * (1 - range);
+        el2_pos.bottom -= el2.height() * (1 - range);
+        el2_pos.left   += el2.width() * (1 - range);
+        el2_pos.right  -= el2.width() * (1 - range);
+
         if (el1_pos.left   < el2_pos.right &&
             el1_pos.right  > el2_pos.left &&
             el1_pos.top    < el2_pos.bottom &&
             el1_pos.bottom > el2_pos.top) {
-            $('#p1').css({top: el1_pos.top, left: el1_pos.left});
-            $('#p2').css({top: el1_pos.bottom, left: el1_pos.left});
-            $('#p3').css({top: el1_pos.top, left: el1_pos.right});
-            $('#p4').css({top: el1_pos.bottom, left: el1_pos.right});
             return true;
         } else {
             return false;
