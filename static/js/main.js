@@ -10,7 +10,7 @@ var Fall = {
     cell: {width: 50, height: 50},
 
     tick_speed: 50,  // milliseconds
-    fall_speed: 500,
+    fall_speed: 1300,
 
     layers: {},
     height: 0,
