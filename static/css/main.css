@@ -285,3 +285,11 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 #front *, #middle1 *, #middle2 *, #back *{
     position: absolute;
 }
+
+.plane1_animate{
+    -webkit-animation : spin .8s linear infinite;
+}
+@-webkit-keyframes spin {
+    0%   { -webkit-transform: rotate(0deg) scale(0.2); }
+    100% { -webkit-transform: rotate(360deg) scale(0.2); }
+}
