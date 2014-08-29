@@ -252,8 +252,7 @@ ul.messages li:nth-child(119n+119){ color: YellowGreen; }
 #man {
     position: absolute;
     width:50px;
-    height:50px;
-    background:brown;
+    height:25px;
 }
 
 #rectangle {

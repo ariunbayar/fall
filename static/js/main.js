@@ -160,7 +160,7 @@ var Fall = {
         },
 
     crash: function(){
-        Fall.man.el.css('background-color', 'red');
+        Fall.man.el.find('path').attr('stroke', 'red');
         Fall.toggle_pause();
         },
 
