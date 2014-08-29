@@ -169,8 +169,8 @@ var Fall = {
         // TODO change with grid width
         var css = {
             opacity         : layer.speed,
-            height          : Fall.cell.height,
-            width           : Fall.cell.width,
+            height          : Fall.cell.height * layer.speed,
+            width           : Fall.cell.width * layer.speed,
             left            : (column - 1) * Fall.cell.width,
             top             : Fall.row * Fall.cell.height
         };
