@@ -9,7 +9,7 @@ var Fall = {
     row:    12,  // default height
     cell: {width: 50, height: 50},
 
-    tick_speed: 100,  // milliseconds
+    tick_speed: 20,  // milliseconds
     fall_speed: 2000,
 
     layers: {},
